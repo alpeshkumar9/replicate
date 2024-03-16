@@ -15,3 +15,7 @@ class Books(models.Model):
     def __str__(self) -> str:
         """Return the book's title as its string representation."""
         return self.title
+
+    class Meta:
+        verbose_name = "Book"
+        verbose_name_plural = "Books"
