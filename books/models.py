@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Book(models.Model):
+class Books(models.Model):
     """
     Represents a book in the library, including details about its title,
     author, ISBN, publication date, and availability.
