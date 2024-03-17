@@ -3,10 +3,12 @@ from .models import Books
 
 
 class BookSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the Book model.
-    """
+    tag_names = serializers.SerializerMethodField()
 
     class Meta:
         model = Books
-        fields = '__all__'
+        fields = ['id', 'title', 'author', 'description',
+                  'tag_names']  # Add other fields as needed
+
+    def get_tag_names(self, obj):
+        return [tag.name for tag in obj.tags.all()]
