@@ -1,6 +1,8 @@
 import logging
 from django.contrib.auth import login
 from rest_framework.authtoken.models import Token
+from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
@@ -27,4 +29,24 @@ class LoginAPIView(APIView):
                 }
             }, status=200)
         else:
-            return Response(serializer.errors, status=400)
+            return Response(serializer.errors, status=200)
+
+
+class VerifyToken(APIView):
+    """View to verify tokens."""
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        logging.info(f"Headers: {request.headers}")
+        try:
+            # `request.auth` contains the token model instance from the header
+            # `request.user` contains the user associated with the token
+            return Response({
+                "success": True,
+                "user": {
+                    "first_name": request.user.first_name,
+                    "last_name": request.user.last_name
+                }
+            })
+        except Token.DoesNotExist:
+            raise AuthenticationFailed('Invalid token')
