@@ -128,7 +128,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 if not os.path.exists(STATIC_DIR):
     os.makedirs(STATIC_DIR)
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
