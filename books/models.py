@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Books(models.Model):
     """
     Represents a book in the library, including details about its title,
-    author, ISBN, publication date, and availability.
+    author, publication date, and availability.
     """
     title: str = models.CharField(max_length=255)
     author: str = models.CharField(max_length=255)
