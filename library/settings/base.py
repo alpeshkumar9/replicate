@@ -34,7 +34,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
-CORS_ORIGIN_WHITELIST = env('ALLOWED_HOSTS').split(',')
+CORS_ORIGIN_WHITELIST = env('CSRF_TRUSTED_ORIGINS').split(',')
 CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
