@@ -33,8 +33,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
-                         'localhost', '127.0.0.1', env('FRONTEND_DEV_URL')])
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 CORS_ALLOW_ALL_ORIGINS = True
 # Application definition
 
